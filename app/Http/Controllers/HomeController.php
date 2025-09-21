@@ -72,14 +72,19 @@ foreach ($card_food  as $card_foods){
 public function gofile(){
     return view('admin.adminfile');
 }
+
+public function backhome(){
+    return view('profile.main');
+}
+
     public function home()
     {
       if (Auth::id()) {
            $usertype = Auth::user()->usertype;
-             if ($usertype=='user')  {
+             if ($usertype=='admin'){
                 return view('dashboard');
               }
-                else {return view('admin.index');
+                else {return view('dashboard');
                 }
       };
         return redirect()->route('login');

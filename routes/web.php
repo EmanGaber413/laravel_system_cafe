@@ -31,13 +31,16 @@ Route::post('/booktable',[HomeController::class,'booktable'])->name("booktable")
 
 
 Route::get('/dashboard', [HomeController::class, 'home'])
-    ->middleware(['auth', 'user'])
+    ->middleware(['auth','user'])
     ->name('dashboard');
 
 //
 Route::get('/dashboard', [HomeController::class,'home'])
     ->middleware(['auth', 'admin'])
-    ->name('admin.dashboard');
+    ->name('dashboard');
+
+Route::get('/backhome', [HomeController::class, 'backhome'])->name('backhome');
+
 
 Route::get('/addfood',[admincontroller::class,'addfood'])->middleware('auth','admin')
 ->name('addfood');

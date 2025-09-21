@@ -18,13 +18,13 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
     @if(session('error'))
-<div class="bg-red-200 text-red-800 px-4 py-2 rounded">
+<div style="background-color: rgb(224, 129, 129); color: white; border: 2px solid rgb(219, 255, 90);">
     {{ session('error') }}
 </div>
 @endif
 
   @if (session('booktable'))
-<div style="background-color: rgb(2, 44, 16); color: white; border: 2px solid rgb(0, 225, 255);"
+<div style="background-color: rgb(11, 126, 36); color: rgb(229, 255, 111); border: 2px solid rgb(196, 245, 104);"
 class=" px-4 pp-4 rounded relative">
     {{ session('booktable') }}
 </div>

@@ -10,8 +10,7 @@
 @endif
 
 @if (session('confirm_order'))
-<div class="mb-4 bg-green-100 border border-blue-400
- text-blue-700 px-4 py-4 rounded relative">
+<div <div style="background-color: rgb(79, 230, 104); color: rgb(75, 72, 72); border: 2px solid rgb(219, 255, 90);">
     {{ session('confirm_order') }}
 </div>
 @endif
