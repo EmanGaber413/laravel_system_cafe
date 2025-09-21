@@ -1,0 +1,28 @@
+body.light-theme {
+    background-color: #f5f5f5 !important;
+    color: #333 !important;
+}
+
+body.light-theme .header,
+body.light-theme #sidebar,
+body.light-theme .footer {
+    background-color: #ffffff !important;
+    color: #333 !important;
+}
+
+body.light-theme a,
+body.light-theme a:hover {
+    color: #007bff !important;
+}
+
+body.light-theme .navbar,
+body.light-theme .page-content,
+body.light-theme .list-unstyled li {
+    background-color: #ffffff !important;
+    color: #333 !important;
+}
+
+body.light-theme .badge {
+    background-color: #007bff !important;
+    color: #fff !important;
+}

@@ -1,0 +1,30 @@
+/* style-light.css */
+
+/* خلفية الصفحة */
+body {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+/* الهيدر */
+header.navbar {
+  background-color: #e9ecef !important;
+  color: #212529 !important;
+}
+
+/* السايدبار */
+#sidebar {
+  background-color: #dee2e6 !important;
+  color: #212529 !important;
+}
+
+/* روابط السايدبار */
+#sidebar a {
+  color: #212529 !important;
+}
+
+/* زرار التغيير */
+#themeToggle {
+  background-color: #007bff !important;
+  color: #fff !important;
+}

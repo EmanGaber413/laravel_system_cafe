@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
+
     <link rel="stylesheet" href="admin/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="admin/vendor/font-awesome/css/font-awesome.min.css">
@@ -18,7 +19,7 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="admin/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="admin/css/custom.css">
+    <link rel="stylesheet" href="admin/css/style.default.css" id="theme-stylesheet">
     <!-- Favicon-->
     <link rel="shortcut icon" href="admin/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -28,6 +29,8 @@
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg">
+        <button class="btn btn-info" id="themeToggle" style="margin-left:10px;">Light Theme</button>
+
         <div class="search-panel">
           <div class="search-inner d-flex align-items-center justify-content-center">
             <div class="close-btn">Close <i class="fa fa-close"></i></div>
@@ -48,9 +51,15 @@
             <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
           </div>
           <div class="right-menu list-inline no-margin-bottom">
-            <div class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
-            <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email"></i><span class="badge dashbg-1">5</span></a>
-              <div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu messages"><a href="#" class="dropdown-item message d-flex align-items-center">
+            <div class="list-inline-item"><a href="#" class="search-open nav-link">
+                <i class="icon-magnifying-glass-browser"></i></a></div>
+            <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1"
+                href="http://example.com" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email">
+                    </i><span class="badge dashbg-1">5</span></a>
+              <div aria-labelledby="navbarDropdownMenuLink1"
+              class="dropdown-menu messages"><a href="#" class="dropdown-item message d-flex
+              align-items-center">
                   <div class="profile"><img src="img/avatar-3.jpg" alt="..." class="img-fluid">
                     <div class="status online"></div>
                   </div>
@@ -71,7 +80,7 @@
 
 
 
-            <!-- Log out               -->
+            <!-- Log out -->
             <div class="list-inline-item logout">
                 <form method="POST" action="{{ route('logout') }}" >
                                 @csrf
@@ -94,17 +103,21 @@
             <p>Web Designer</p>
           </div>
         </div>
-        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+        <!-- Sidebar Navidation Menus-->
+        <span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
                 <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
                 <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
                 <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false"
+                    data-toggle="collapse"> <i class="icon-windows"></i>Foods </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
+                    <li><a href="{{'addfood'}}">add food</a></li>
+                    <li><a href= "{{'showfood'}}">show food</a></li>
+                    <li><a href= "{{'vieworders'}}">View orders</a></li>
+                    <li><a href= "{{'viewbookedtable'}}">View Booked Table</a></li>
+
                   </ul>
                 </li>
                 <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
@@ -123,7 +136,11 @@
           </div>
         </div>
 
-    @yield('admindashboard')
+    {{-- @yield('admindashboard')
+    @yield('addfood')
+    @yield('showfood')
+    @yield('updatefood') --}}
+    @yield('content')
 
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
@@ -136,6 +153,8 @@
       </div>
     </div>
     <!-- JavaScript files-->
+
+
     <script src="admin/vendor/jquery/jquery.min.js"></script>
     <script src="admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -144,5 +163,23 @@
     <script src="admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="admin/js/charts-home.js"></script>
     <script src="admin/js/front.js"></script>
+    <script>
+    const themeToggle = document.getElementById('themeToggle');
+let lightTheme = false;
+
+themeToggle.addEventListener('click', () => {
+  const themeStylesheet = document.getElementById('theme-stylesheet');
+
+  if(!lightTheme){
+    themeStylesheet.setAttribute('href', 'admin/css/style-light.css');
+    themeToggle.textContent = 'Dark Theme';
+  } else {
+    themeStylesheet.setAttribute('href', 'admin/css/style.default.css');
+    themeToggle.textContent = 'Light Theme';
+  }
+  lightTheme = !lightTheme;
+});
+
+  </script>
   </body>
 </html>

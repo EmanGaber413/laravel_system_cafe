@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with FoodHut landing page.">
     <meta name="author" content="Devcrud">
-    <title>FoodHut | Free Bootstrap 4.3.x template</title>
+    <title>FoodHut | Eman temp.</title>
 
     <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="user/assets/vendors/themify-icons/css/themify-icons.css">
 
-    <link rel="stylesheet" href="assets/vendors/animate/animate.css">
+    <link rel="stylesheet" href="user/assets/vendors/animate/animate.css">
 
     <!-- Bootstrap + FoodHut main styles -->
-	<link rel="stylesheet" href="assets/css/foodhut.css">
+	<link rel="stylesheet" href="user/assets/css/foodhut.css">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
+    @if(session('error'))
+<div class="bg-red-200 text-red-800 px-4 py-2 rounded">
+    {{ session('error') }}
+</div>
+@endif
+
+  @if (session('booktable'))
+<div style="background-color: rgb(2, 44, 16); color: white; border: 2px solid rgb(0, 225, 255);"
+class=" px-4 pp-4 rounded relative">
+    {{ session('booktable') }}
+</div>
+@endif
+
+
     <!-- Navbar -->
-    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top"
+     data-spy="affix" data-offset-top="10">
+        <button class="navbar-toggler" type="button"
+        data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls=
+        "navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,8 +53,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#book-table">Book-Table</a>
                 </li>
+
             </ul>
-            <a class="navbar-brand m-auto" href="#">
+
+            <a class="navbar-brand" href="#">
                 <img src="assets/imgs/logo.svg" class="brand-img" alt="">
                 <span class="brand-txt">Food Hut</span>
             </a>
@@ -49,14 +68,57 @@
                     <a class="nav-link" href="#testmonial">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link" href="#contact">ContactUs</a>
                 </li>
+                {{-- <nav class="flex items-center justify-end gap-4"> --}}
+                 @if (Route::has('login'))
+                 @auth
+                <li class="nav-item"><a href="{{ url('/dashboard') }}"class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="{{ route('food.card') }}"class="nav-link">FoodCard</a></li>
                 <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4">Components</a>
+                    <div class="list-inline-item logout ">
+                <form method="POST" action="{{ route('logout') }}" >
+                                @csrf
+
+                 <input style="border-radius:12px; background-color:red; color:white; padding:5px;" type="submit" value="logout">
+
+                            </form></div>
                 </li>
+                    @else
+                    <li class="nav-item">
+                        <a
+                            href="{{ route('login') }}"
+                            class="nav-link">
+                            Log in
+                        </a>
+                        </li>
+                    <li class="nav-item">
+                            <a
+                                href="{{ route('register') }}"
+                                class="nav-link">
+                                sign up
+                            </a>
+                            </li>
+                            @endauth
+                   @endif
+
+                </nav>
+
+
+                {{-- <li class="nav-item"><div class="list-inline-item logout">
+                <form method="POST" action="{{ route('logout') }}" >
+                                @csrf
+
+                 <input style="border-radius:12px; background-color:red; color:white;" type="submit" value="logout">
+
+                            </form></div></li> --}}
             </ul>
         </div>
     </nav>
+    <!--food card -->
+    <div>
+        @yield('admin.profile.show_card')
+    </div>
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
@@ -85,107 +147,53 @@
     </div>
 
     <!--  gallary Section  -->
-    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+    <div id="gallary" class="text-center bg-dark
+    text-light has-height-md middle-items wow fadeIn">
         <h2 class="section-title">OUR MENU</h2>
     </div>
-    <div class="gallary row">
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-1.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-2.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-3.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-4.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-5.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-6.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-7.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-8.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-9.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-10.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-11.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-12.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    </div>
 
-    <!-- book a table Section  -->
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+                @yield("home")
+            </div>
+    </div>
+  <!-- book a table Section  -->
     <div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
         <div class="">
             <h2 class="section-title mb-5">BOOK A TABLE</h2>
+ <form action="{{route('booktable')}}" method="POST">
+@csrf
             <div class="row mb-5">
                 <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="email" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                    <input type="email" id="booktable" name="email"
+                    class="form-control form-control-lg custom-form-control" placeholder="EMAIL" required>
                 </div>
                 <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="number" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="NUMBER OF GUESTS" max="20" min="0">
+                    <input type="number" id="booktable" class="form-control form-control-lg
+                    custom-form-control" name="number_of_guests" type="number" placeholder="NUMBER OF GUESTS"
+                     max="20" min="1">
                 </div>
                 <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="time" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                    <input type="time" id="booktable" name="time"
+                      class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
                 </div>
                 <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="12/12/12">
+                    <input type="date" id="booktable" name="date" class="form-control
+                    form-control-lg custom-form-control" placeholder="12/12/12">
                 </div>
+
+
             </div>
-            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
+             <div class="">
+                    <input type="submit" name="submit"
+                    class="btn btn-lg btn-primary" id="rounded-btn" value="FIND TABLE">
+                </div>
+            </form>
         </div>
+
     </div>
 
-   {{-- @yield('admin.profile.home'); --}}
+   @yield('admin.profile.home');
 
     <!-- page footer  -->
     <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
@@ -210,20 +218,20 @@
     <!-- end of page footer -->
 
 	<!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="user/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="user/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
 
     <!-- bootstrap affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <script src="user/assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
     <!-- wow.js -->
-    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="user/assets/vendors/wow/wow.js"></script>
 
     <!-- google maps -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
 
     <!-- FoodHut js -->
-    <script src="assets/js/foodhut.js"></script>
+    <script src="user/assets/js/foodhut.js"></script>
 
 </body>
 </html>
